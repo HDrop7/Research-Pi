@@ -10,3 +10,8 @@ we are using fastapi, uvicorn, and pydantic, so install those
 
 to start up the backend first make sure the virtual env is up then  run 
 	'$ uvicorn main:app --reload'
+
+OR use the start-up script to do all of this for you
+	'$ ./start.sh'
+just note server port might change and make sure it has permissions with
+	'$ chmod +x ./start.sh'
