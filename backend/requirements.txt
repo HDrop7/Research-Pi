@@ -1,0 +1,12 @@
+create a python3 virtual environment to run the backend
+	'$ python3 -m venv venv'
+
+start your virtual environment
+	'$ source venv/bin/activate' on linux (windows you're on your own)
+
+we are using fastapi, uvicorn, and pydantic, so install those
+	'$ pip install fastapi "uvicorn[standard]" pydantic'
+
+
+to start up the backend first make sure the virtual env is up then  run 
+	'$ uvicorn main:app --reload'

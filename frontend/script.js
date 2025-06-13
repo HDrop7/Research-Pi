@@ -13,12 +13,12 @@ document.getElementById('form').addEventListener('submit', async function (event
 
     try {
         // Try to request the summary from backend
-        const response = await fetch('https://127.0.0.1.800/api/summarize', {
+        const response = await fetch('http://127.0.0.18000/api/summarize', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ professor: professor, schoo: school })
+            body: JSON.stringify({ professor: professor, school: school })
         })
 
         // Check if request worked
