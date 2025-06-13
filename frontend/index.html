@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Pi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <h1>Research Pi</h1>
+        <form id="form">
+            <input type="text" id="professorName" placeholder="Enter Professor's Name" required>
+            <input type="text" id="schoolName" placeholder="Enter Your School">
+            <button type="submit">Generate Cards</button>
+        </form>
+        <div id="results" class="hidden">
+            <h2>Results</h2>
+            <!-- figure out how to format professor info -->
+            <h3></h3>
+            <p id="professorInfo"></p>
+            <h3>Keywords:</h3>
+            <ul id="keywords"></ul>
+            <h3>Summary</h3>
+            <p id="summary"></p>
+        </div>
+        <div id="loading" class="hidden">
+            <p>Loading, please wait...</p>
+        </div>
+        <footer class="footer">
+            <p>This is a open source RCOS project</p>
+            <p>
+                Problem? Submit a issue on <a target="_blank" href="https://optical.toys/concentric-spirals/">GitHub</a>
+            </p>
+        </footer>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
