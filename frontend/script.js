@@ -35,8 +35,13 @@ document.getElementById('form').addEventListener('submit', async function (event
         // reveal the results
         results.classList.remove('hidden');
     } catch (error) {
-        console.error('Error fetching data: ', error);
-        alert('Something went wrong. Please try again later.');
+        if (error instanceof TypeError && error.message == 'NetworkError when attempting to fetch resource.') {
+            console.error(error);
+            alert('Network error: Please check your connection.');
+        } else {
+            console.error(error);
+            alert('Something went wrong. Please try again later.');
+        }
         results.classList.remove('hidden');
     } finally {
         loading.classList.add('hidden');
