@@ -1,6 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import json
+
+from nlp_processor import extract_keywords
+
+with open("../professors.json", "r") as f:
+    professors_data = json.load(f)
 
 class Query(BaseModel):
 	professor: str
@@ -26,8 +32,26 @@ async def get_summary(query: Query):
 	"""
 
 	print(f"Recieved request for Professor: {query.professor} at {query.school}")
+	key = f"{query.professor}|{query.school}"
+	
+	if key not in professors_data:
+		print(f"{key} not found")
+		return {
+			"professor": query.professor,
+			"school": query.school,
+			"keywords": ["N/A"],
+			"summary": "Professor not found. Please check the name and school."
+		}
+  
+	print(f"{key} found, proceeding with summarization...")
+	abstracts = ""
+	for paper in professors_data[key]["papers"]:
+		abstracts += paper["abstract"] + ", "
+	abstracts.strip(", ")
 
-	keywords = ["RPI", "Computer Vision", "Neural Networks", "Data Science"] 
+	keywords = extract_keywords(abstracts)
+
+	# keywords = ["RPI", "Computer Vision", "Neural Networks", "Data Science"] 
 	summary = f"This is a summary from the backend on {query.professor}"
 
 	return {
@@ -36,3 +60,7 @@ async def get_summary(query: Query):
 		"keywords": keywords,
 		"summary": summary
 	}
+
+@app.get("/")
+async def root():
+    return {"message": "Welcome to the backend API!"}
