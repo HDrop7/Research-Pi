@@ -50,8 +50,6 @@ async def get_summary(query: Query):
 	abstracts.strip(", ")
 
 	keywords = extract_keywords(abstracts)
-
-	# keywords = ["RPI", "Computer Vision", "Neural Networks", "Data Science"] 
 	summary = f"This is a summary from the backend on {query.professor}"
 
 	return {

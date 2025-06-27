@@ -17,7 +17,8 @@
         </h1>
         <form id="form">
             <input type="text" id="professorName" placeholder="Enter Professor's Name" required>
-            <input type="text" id="schoolName" placeholder="Enter Your School">
+            <input type="text" id="schoolName" placeholder="Enter Your School" value="RPI" required>
+            <input type="text" id="keywordList" placeholder="Topics of interest (comma separated)">
             <button type="submit">Generate Cards</button>
         </form>
         <div id="results" class="hidden">
@@ -27,7 +28,7 @@
             <p id="professorInfo"></p>
             <h3>Keywords:</h3>
             <ul id="keywords"></ul>
-            <h3>Summary</h3>
+            <h3>Summary:</h3>
             <p id="summary"></p>
         </div>
         <div id="loading" class="hidden">
@@ -36,7 +37,8 @@
         <footer class="footer">
             <p>This is a open source RCOS project</p>
             <p>
-                Problem? Submit a issue on <a target="_blank" href="https://optical.toys/concentric-spirals/">GitHub</a>
+                Problem? Submit a issue on <a target="_blank"
+                    href="https://github.com/HDrop7/Research-Pi/issues/new">GitHub</a>
             </p>
         </footer>
     </main>
