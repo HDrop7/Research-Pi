@@ -1,0 +1,29 @@
+source: https://medium.com/@abstractive-health/extractive-vs-abstractive-summarization-in-healthcare-bfe7424eb586 
+
+Types of summaries used in LLMs:
+ - Extractive
+    * Pulls out key sentences and combines them
+    * Good for preventing hallucinations
+    * Doesn't produce a coherent summary
+ - Abstractive
+    * Mimics a human, creates new sentences based on the main points
+    * May induce hallucinations
+    * Can result in nice to read summaries
+ - Hybrid
+    * A combination of both
+    * One pass retrieves important sentences
+    * Another pass combines them into a summary 
+
+Issues
+ - Our input is large, and LLMs context windows are not
+    * A multi-pass approach is needed
+ - We have pdf input and we need to extract text 
+ - If we do a hybrid, it will get more expensive
+    * Might be a problem for local models 
+ - Hallucinations are a serious problem we need to avoid
+ 
+Method:
+ - Divide up extracted pdf text into groups of pages for input into the LLM
+ - Go page group by page group, using the model to select a few sentences from each.
+ - Then read these select sentences and create a more coeherent final response.	
+
